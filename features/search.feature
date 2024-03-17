@@ -26,6 +26,6 @@ Feature: Website Navigation and User Registration
   
   Scenario: Navigate to Jobs Page
     Given User is on the website home page
-    When User Navicates to "Jobs" page
+    When User click on  "Jobs" page
     Then User should be redirected to the Jobs page
 

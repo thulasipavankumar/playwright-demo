@@ -12,7 +12,7 @@ When('User is on the website home page',async () => {
     const homePage = new HomePage(global.page)
     await homePage.navigateToHome();
 })
-When('User clicks on "Cases" page',async () => {  
+When('User clicks on the "Cases" link',async () => {  
   const homePage = new HomePage(global.page)
   await homePage.navigateToCasesPage();
 })
@@ -26,7 +26,7 @@ When('User clicks on "Contact" page',async () => {
   await homePage.navigateToContactPage();
 })
 
-When('User clicks on "Jobs" page',async () => {  
+When('User click on  "Jobs" page',async () => {  
   const homePage = new HomePage(global.page)
   await homePage.navigateToJobsPage();
 })
@@ -50,11 +50,11 @@ Then('User should be redirected to the About Us page', async () => {
 
 Then('User should be redirected to the Contact page', async () => {
   const homePage = new HomePage(global.page)
-  await homePage.assertForAboutUsPage();
+  await homePage.assertForContactPage();
 })
 Then('User should be redirected to the Jobs page', async () => {
   const homePage = new HomePage(global.page)
-  await homePage.assertForAboutUsPage();
+  await homePage.assertForJobsPage();
 })
 Then('User should be redirected to the Solutions page', async () => {
   const homePage = new HomePage(global.page)

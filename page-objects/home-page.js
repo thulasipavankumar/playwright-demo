@@ -8,7 +8,7 @@ exports.HomePage = class HomePage {
     this.acceptCookies = page.getByRole('button', { name: 'Allow all cookies' })
     this.logoElement = page.locator('.logo').first();;
     this.services_link = page.locator('nav.nav a[href="/services"]')
-    this.cases_link = page.locator('nav.nav a[href="/cases"')
+    this.cases_link = page.locator('nav.nav a[href="/cases"]')
     this.abous_us_link = page.locator('nav.nav a[href="/about-us"]');
     this.contact_link = page.locator('nav.nav a[href="/contact"]')
     this.jobs_link = page.locator('nav.nav a[href="/jobs"]')
