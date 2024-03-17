@@ -15,18 +15,11 @@ exports.HomePage = class HomePage {
     this.home_link = page.locator('[href*="/"]')
   }
 
-  async searchKeysInSearchBar (keyword) {
-    try {
-      await this.searchButton.click()
-      await this.searchBar.fill(keyword)
-    } catch (e) {
-      await page.screenshot({ path: 'screenshots/SearchFailKeyPress.png',fullPage: true  });
-      throw e;
-    }
-  }
+
   async navigateToHome(){
     await this.page.goto('https://www.uniweb.eu/')
-    await this.acceptCookies.click()
+    if(this.acceptCookies.isVisible())
+      await this.acceptCookies.click()
     await expect(page).toHaveTitle('UniWeb')
   }
   async navigateToSolutionsPage(){
