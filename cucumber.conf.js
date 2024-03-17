@@ -24,7 +24,12 @@ AfterAll(async function () {
 
 // Create a new browser context and page per scenario
 Before(async function () {
-  global.context = await global.browser.newContext();
+  global.context = await global.browser.newContext( {
+    use: {
+      video: 'on',
+      dir: 'videos/' 
+    }
+  });
   global.page = await global.context.newPage();
 });
 

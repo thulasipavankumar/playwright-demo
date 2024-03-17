@@ -17,10 +17,16 @@ exports.HomePage = class HomePage {
 
 
   async navigateToHome(){
-    await this.page.goto('https://www.uniweb.eu/')
-    if(this.acceptCookies.isVisible())
-      await this.acceptCookies.click()
-    await expect(page).toHaveTitle('UniWeb')
+    try{
+      await this.page.goto('https://www.uniweb.eu/')
+      if(this.acceptCookies.isVisible())
+        await this.acceptCookies.click()
+      await expect(page).toHaveTitle('UniWeb')
+    }catch(error){
+      await page.screenshot({ path: 'screenshots/HomePage.png',fullPage: true  });
+      throw error
+    }
+    
   }
   async navigateToSolutionsPage(){
     await this.services_link.click();

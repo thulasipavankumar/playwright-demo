@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js --require cucumber.conf.js --require step-definitions/*.js features/search.feature  --format 'junit:reports/junit/junit.xml' --format 'html:reports/html/index.html' --format 'json:reports/json/report.json'",
+    "test:functional": "cucumber-js --require cucumber.conf.js --tags @functional --require step-definitions/*.js features/search.feature  --format 'junit:reports/junit/junit.xml' --format 'html:reports/html/index.html' --format 'json:reports/json/report.json'",
     "run-parallel": "cucumber-js --require cucumber.conf.js --require step-definitions/*.js features/search.feature --parallel 2"
   },
   "keywords": [],
