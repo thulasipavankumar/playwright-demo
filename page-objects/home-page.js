@@ -3,7 +3,7 @@ exports.HomePage = class HomePage {
   /**
    * @param {import ('@playwright/test').Page} page
    */
-  constructor (page) {
+  constructor(page) {
     this.page = page
     this.acceptCookies = page.getByRole('button', { name: 'Allow all cookies' })
     this.logoElement = page.locator('.logo').first();;
@@ -16,54 +16,58 @@ exports.HomePage = class HomePage {
   }
 
 
-  async navigateToHome(){
-    try{
-      await this.page.goto('https://www.uniweb.eu/')
-      if(this.acceptCookies.isVisible())
-        await this.acceptCookies.click()
-      await expect(page).toHaveTitle('UniWeb')
-    }catch(error){
-      await page.screenshot({ path: 'screenshots/HomePage.png',fullPage: true  });
-      throw error
-    }
-    
+  async navigateToHome() {
+    await this.page.goto('https://www.uniweb.eu/')
+    await this.clickCookiesIfPresent()
+    await expect(page).toHaveTitle('UniWeb')
+
   }
-  async navigateToSolutionsPage(){
+  async clickCookiesIfPresent() {
+    try {
+      if (this.acceptCookies.isVisible())
+        await this.acceptCookies.click()
+    } catch (error) {
+      await page.screenshot({ path: 'screenshots/CookiesFail.png', fullPage: true });
+
+    }
+
+  }
+  async navigateToSolutionsPage() {
     await this.services_link.click();
   }
-  async navigateToCasesPage(){
+  async navigateToCasesPage() {
     await this.cases_link.click();
   }
-  async navigateToAboutUsPage(){
+  async navigateToAboutUsPage() {
     await this.abous_us_link.click();
   }
-  async navigateToContactPage(){
+  async navigateToContactPage() {
     await this.contact_link.click();
   }
-  async navigateToJobsPage(){
+  async navigateToJobsPage() {
     await this.jobs_link.click();
   }
-  async assertForAboutUsPage(){
-    await expect(page).toHaveURL('https://www.uniweb.eu/about-us'); 
+  async assertForAboutUsPage() {
+    await expect(page).toHaveURL('https://www.uniweb.eu/about-us');
   }
-  async assertForLogoVisibility(){
-    const visibility = await this.logoElement.isVisible(); 
+  async assertForLogoVisibility() {
+    const visibility = await this.logoElement.isVisible();
     await expect(visibility).not.toBeNull();
   }
-  async assertForContactPage(){
-    await expect(page).toHaveURL('https://www.uniweb.eu/contact'); 
+  async assertForContactPage() {
+    await expect(page).toHaveURL('https://www.uniweb.eu/contact');
   }
 
-  async assertForJobsPage(){
-    await expect(page).toHaveURL('https://www.uniweb.eu/jobs'); 
+  async assertForJobsPage() {
+    await expect(page).toHaveURL('https://www.uniweb.eu/jobs');
   }
-  async assertForCasesPage(){
-    await expect(page).toHaveURL('https://www.uniweb.eu/cases'); 
+  async assertForCasesPage() {
+    await expect(page).toHaveURL('https://www.uniweb.eu/cases');
   }
-  async assertForSolutionsPage(){
-    await expect(page).toHaveURL('https://www.uniweb.eu/services'); 
+  async assertForSolutionsPage() {
+    await expect(page).toHaveURL('https://www.uniweb.eu/services');
   }
 
-  
-  
+
+
 }
